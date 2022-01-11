@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Canvas} from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const Scene = () => (
+  <Canvas camera={{position:[5,5,5]}}>
+    <mesh position={[0,0,0]}>
+      <boxBufferGeometry args={[3,3,3]} />
+      <meshNormalMaterial/>
+    </mesh>
+    <OrbitControls />
+
+  </Canvas>
+)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Scene/>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
